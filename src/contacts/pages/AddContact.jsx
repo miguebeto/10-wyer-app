@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Add_Contact } from "../../store/slices/contactSlice";
+import { Add_Contact, SetInitState } from "../../store/slices/contactSlice";
 import { useForm } from "../hooks/useForm";
 
 import Swal from "sweetalert2";
@@ -38,6 +38,8 @@ export const AddContact = () => {
     Swal.fire("Contacto Agregado!", "You clicked the button!", "success");
     onResetForm();
   };
+  
+
 
   return (
     <>

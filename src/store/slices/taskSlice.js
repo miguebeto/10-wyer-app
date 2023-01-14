@@ -8,7 +8,7 @@ export const taskSlice = createSlice({
     name: 'task',
     initialState: {
         currentContactId: '',
-        tasks: initTask()
+        tasks: initTask
     },
     reducers: {
         Add_CurrentId: (state, {payload}) => {

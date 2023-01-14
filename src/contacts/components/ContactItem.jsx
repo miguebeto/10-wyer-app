@@ -25,9 +25,7 @@ export const ContactItem = () => {
     Navigate("/editContact");
   };
 
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-  }, [contacts]);
+
 
   return (
     <div>

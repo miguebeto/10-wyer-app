@@ -1,16 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-const initContact = () => {
-    return JSON.parse(localStorage.getItem("contacts") || []);
-};
-
 export const contactSlice = createSlice({
   name: "contact",
   initialState: {
     idEdit: '',
     search: '',
-    contacts: initContact(),
+    contacts: [],
     //     contact: [{
     //         id: ','
     //         name: '',
