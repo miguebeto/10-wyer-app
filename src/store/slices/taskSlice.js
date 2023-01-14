@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initTask = () => {
+const initTasks = () => {
     return JSON.parse( localStorage.getItem( "tasks" ) ) || [];
 };
 
@@ -8,7 +8,7 @@ export const taskSlice = createSlice({
     name: 'task',
     initialState: {
         currentContactId: '',
-        tasks: initTask
+        tasks: initTasks()
     },
     reducers: {
         Add_CurrentId: (state, {payload}) => {

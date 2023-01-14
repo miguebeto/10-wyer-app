@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Add_CurrentId, Delete_Task } from "../../store";
@@ -8,10 +9,9 @@ export const Tasks = ({ contactId }) => {
   const { tasks } = useSelector((state) => state.task);
   const dispatch = useDispatch();
 
-  const onAddTask = () => {
+  useEffect(() => {
     dispatch(Add_CurrentId(contactId));
-    Navigate("/addTask");
-  };
+  }, [contactId]);
 
   return (
     <>
@@ -35,14 +35,17 @@ export const Tasks = ({ contactId }) => {
                   </li>
                 </ul>
               </div>
-              <button className="btn btn-danger" onClick={()=> dispatch(Delete_Task(task.id))}>
+              <button
+                className="btn btn-danger"
+                onClick={() => dispatch(Delete_Task(task.id))}
+              >
                 Borrar
               </button>
             </div>
           );
       })}
       <div className="--btn-buttoms">
-        <button className="btn btn-outline-primary" onClick={onAddTask}>
+        <button className="btn btn-outline-primary" onClick={() => Navigate("/addTask")}>
           Agregar
         </button>
       </div>

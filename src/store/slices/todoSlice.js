@@ -1,16 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 
-const initContactDetail = () => {
+const initTodos = () => {
     return JSON.parse( localStorage.getItem( "todos" ) ) || [];
 };
-
 
 export const todoSlice = createSlice({
     name: 'todo',
     initialState: {
         done: false,
-        todos: []
+        todos: initTodos()
     },
     reducers: {
         Add_Todo: (state, {payload}) => {

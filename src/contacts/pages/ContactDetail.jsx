@@ -51,12 +51,12 @@ export const ContactDetail = () => {
       </h5>
       <div className="profile --card --flex-between">
         <div className="desc">
-          <h4 className="--color-primary">{contact.name}</h4>
-          <h4 className="--color-primary">{contact.lastName}</h4>
-          <p>(+57) {contact.cel}</p>
-          <p>{contact.email}</p>
-          <p>{contact.address}</p>
-          <p>{contact.date}</p>
+          <h4 className="--color-primary">{contact?.name}</h4>
+          <h4 className="--color-primary">{contact?.lastName}</h4>
+          <p>(+57) {contact?.cel}</p>
+          <p>{contact?.email}</p>
+          <p>{contact?.address}</p>
+          <p>{contact?.date}</p>
         </div>
       </div>
       <div className="profile --card --flex-between">

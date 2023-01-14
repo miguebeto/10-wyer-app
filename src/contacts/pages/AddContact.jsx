@@ -39,7 +39,9 @@ export const AddContact = () => {
     onResetForm();
   };
   
-
+  useEffect(() => {
+    JSON.parse( localStorage.getItem( "contacts" ) )
+  }, []);
 
   return (
     <>
