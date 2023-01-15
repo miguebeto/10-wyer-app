@@ -1,13 +1,12 @@
 import { RiContactsFill } from "react-icons/ri";
 import { MdSpeakerNotes, MdTask } from "react-icons/md";
 import { Link } from "react-router-dom";
-import "./Header.css";
+import "./Footer.css";
 import { useSelector } from "react-redux";
 
-export const Header = () => {
+export const Footer = () => {
 
   const contacts = useSelector(status => status.contact?.contacts)
-  console.log(contacts[0]?.id)
 
   return (
     <>
@@ -20,7 +19,7 @@ export const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to={`/contactDetail`}>
+              <Link to={`/contactDetail/${contacts[0]?.id}`}>
                 <MdTask size={28} />
               </Link>
             </li>

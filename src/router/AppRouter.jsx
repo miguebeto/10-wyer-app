@@ -7,7 +7,7 @@ import {
   Tasks,
   AddTask,
 } from "../contacts";
-import { Header } from "../contacts/layout";
+import { Footer} from "../contacts/layout";
 
 export const AppRouter = () => {
   return (
@@ -21,7 +21,7 @@ export const AppRouter = () => {
         <Route path="/contactDetail/:contactId" element={<ContactDetail />} />
         <Route path="/addTask" element={<AddTask />} />
       </Routes>
-      <Header/>
+      <Footer/>
     </>
   );
 };

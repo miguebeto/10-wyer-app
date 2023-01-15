@@ -60,7 +60,7 @@ export const ContactDetail = () => {
         </div>
       </div>
       <div className="profile --card --flex-between">
-        <form>
+        <form className="--form-control">
           <input
             type="text"
             placeholder="Agregar un comentario..."

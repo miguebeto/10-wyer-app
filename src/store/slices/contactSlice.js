@@ -11,21 +11,8 @@ export const contactSlice = createSlice({
     idEdit: '',
     search: '',
     contacts: initContacts()
-    //     contact: [{
-    //         id: ','
-    //         name: '',
-    //         lastname: '',
-    //         email: '',
-    //         cel: null,
-    //         date: null,
-    //         address: '',
-    //         typeContact: '',
-    //     }]
   },
   reducers: {
-    SetInitState: (state, { payload }) => {
-      state.contacts = payload;
-    },
     SetSearch: (state, { payload }) => {
       state.search = payload;
     },

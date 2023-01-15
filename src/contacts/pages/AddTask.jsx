@@ -46,6 +46,7 @@ export const AddTask = () => {
         <form className="--form-control-task">
           <label htmlFor="title">Titulo de la tarea</label>
           <input
+            required
             type="text"
             placeholder="Agregar Titulo"
             className="form-control"
@@ -56,6 +57,7 @@ export const AddTask = () => {
           />
           <label htmlFor="author">Persona Responsable</label>
           <input
+            required
             type="text"
             placeholder="Seleccionar"
             className="form-control"
@@ -66,6 +68,7 @@ export const AddTask = () => {
           />
           <label htmlFor="deadline">Fecha limite</label>
           <input
+            required
             type="date"
             placeholder="Seleccionar"
             className="form-control"

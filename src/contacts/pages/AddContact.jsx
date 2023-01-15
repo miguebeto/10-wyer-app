@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Add_Contact, SetInitState } from "../../store/slices/contactSlice";
+import { Add_Contact } from "../../store/slices/contactSlice";
 import { useForm } from "../hooks/useForm";
 
 import Swal from "sweetalert2";
+import { BiArrowBack } from "react-icons/bi";
 
 export const AddContact = () => {
   const {
@@ -30,7 +31,6 @@ export const AddContact = () => {
 
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-  const { contacts } = useSelector((state) => state.contact);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -38,17 +38,21 @@ export const AddContact = () => {
     Swal.fire("Contacto Agregado!", "You clicked the button!", "success");
     onResetForm();
   };
-  
+
   useEffect(() => {
-    JSON.parse( localStorage.getItem( "contacts" ) )
+    JSON.parse(localStorage.getItem("contacts"));
   }, []);
 
   return (
     <>
-      <h5>Agregar Contacto</h5>
+      <h5>
+        <BiArrowBack onClick={() => Navigate("/")} size={20} />
+        Agregar Contacto
+      </h5>
       <div className="--card-form">
         <form className="--form-control">
           <input
+            required
             type="text"
             placeholder="Nombres"
             className="form-control"
@@ -73,6 +77,7 @@ export const AddContact = () => {
             name="email"
           />
           <input
+            required={true}
             type="text"
             placeholder="cel/tel  "
             className="form-control"

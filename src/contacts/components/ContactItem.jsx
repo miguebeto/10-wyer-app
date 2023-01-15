@@ -3,11 +3,7 @@ import { FaTrashAlt, FaCheckCircle, FaEdit } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import {
-  Remove_Contact,
-  SetIdEdit,
-  SetInitState,
-} from "../../store/slices/contactSlice";
+import { Remove_Contact, SetIdEdit } from "../../store/slices/contactSlice";
 
 export const ContactItem = () => {
   const [done, setDone] = useState(false);
@@ -31,6 +27,13 @@ export const ContactItem = () => {
 
   return (
     <div>
+      {contacts.length === 0 ? (
+        <section className="--flex-center">
+          <h5>No se han resgitrado contactos...</h5>
+        </section>
+      ) : (
+        <h5>Lista de contactos</h5>
+      )}
       {contacts
         .filter((value) => {
           if (search === "") {
@@ -45,9 +48,7 @@ export const ContactItem = () => {
               <h4 className="--color-dark">{name}</h4>
               <p className="--color-primary">(+57) {cel}</p>
             </div>
-            <div>
-
-            </div>
+            <div></div>
             <FaEdit
               size={25}
               className={`icon ${done ? "text-success" : " "}`}
@@ -63,7 +64,7 @@ export const ContactItem = () => {
               className={`icon ${done ? "text-success" : " "}`}
               onClick={() => removeProfile(id)}
             />
-            
+
             <div className="moreInfo">
               <Link to={`/contactDetail/${id}`}>Más..</Link>
             </div>

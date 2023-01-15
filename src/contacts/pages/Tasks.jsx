@@ -46,7 +46,7 @@ export const Tasks = ({ contactId }) => {
       })}
       <div className="--btn-buttoms">
         <button className="btn btn-outline-primary" onClick={() => Navigate("/addTask")}>
-          Agregar
+          Agregar Tarea
         </button>
       </div>
     </>

@@ -29,7 +29,6 @@ export const Contacts = () => {
               value={search}
             />
           </div>
-          <h5>Lista de contactos</h5>
         </div>
         <ContactList />
         <div className="--btn-buttoms">

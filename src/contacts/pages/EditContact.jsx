@@ -36,6 +36,7 @@ export const EditContact = () => {
     dispatch(Edit_Contact(formState));
     Swal.fire("Contacto Actualizado!", "You clicked the button!", "success");
     onResetForm();
+    Navigate("/");
   };
 
   const { contacts } = useSelector((state) => state.contact);
@@ -45,10 +46,11 @@ export const EditContact = () => {
 
   return (
     <>
-    <h5>Editar Contacto</h5>
+      <h5>Editar Contacto</h5>
       <div className="--card-form">
         <form className="--form-control">
           <input
+            required
             type="text"
             placeholder="Nombres"
             className="form-control"
@@ -73,6 +75,7 @@ export const EditContact = () => {
             name="email"
           />
           <input
+            required
             type="text"
             placeholder="cel/tel  "
             className="form-control"
@@ -105,7 +108,11 @@ export const EditContact = () => {
         >
           cancelar
         </button>
-        <button type="submit" className="btn btn-outline-success mt-2" onClick={onFormSubmit}>
+        <button
+          type="submit"
+          className="btn btn-outline-success mt-2"
+          onClick={onFormSubmit}
+        >
           Agregar
         </button>
       </div>
