@@ -8,11 +8,11 @@ import { store } from "./store/store";
 import './main.css'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <HashRouter>
       <Provider store={store}>
         <AppRouter />
       </Provider>
     </HashRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

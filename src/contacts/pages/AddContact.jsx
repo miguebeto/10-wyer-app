@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Add_Contact } from "../../store/slices/contactSlice";
 import { useForm } from "../hooks/useForm";
 
 import Swal from "sweetalert2";
 import { BiArrowBack } from "react-icons/bi";
+import { useContactStore } from "../hooks/useContactStore";
 
 export const AddContact = () => {
   const {
@@ -20,7 +19,6 @@ export const AddContact = () => {
     onInputChange,
     onResetForm,
   } = useForm({
-    id: new Date().getTime(),
     name: "",
     lastName: "",
     email: "",
@@ -29,12 +27,15 @@ export const AddContact = () => {
     address: "",
   });
 
-  const dispatch = useDispatch();
   const Navigate = useNavigate();
+  const { startCreatingContact, startLoadingContact } = useContactStore();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(Add_Contact(formState));
+    if (lastName === "" || cel === "")
+      return alert("Debe rellenar todos los campos");
+    startLoadingContact();
+    startCreatingContact(formState);
     Swal.fire("Contacto Agregado!", "You clicked the button!", "success");
     onResetForm();
   };

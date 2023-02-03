@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Edit_Contact } from "../../store";
 import { useForm } from "../hooks/useForm";
+import { useContactStore } from "../hooks/useContactStore";
 
 import Swal from "sweetalert2";
 
 export const EditContact = () => {
+  const { startUpdateContact, idEdit, contacts } = useContactStore();
   const {
     name,
     lastName,
@@ -19,27 +19,34 @@ export const EditContact = () => {
     onInputChange,
     onResetForm,
   } = useForm({
-    id: new Date().getTime(),
-    name: "",
-    lastName: "",
-    email: "",
-    cel: "",
+    id: idEdit.id,
+    name: idEdit.name,
+    lastName: idEdit.lastName,
+    email: idEdit.email,
+    cel: idEdit.cel,
     date: "",
-    address: "",
+    address: idEdit.address,
   });
 
-  const dispatch = useDispatch();
   const Navigate = useNavigate();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(Edit_Contact(formState));
+    if (
+      lastName === "" ||
+      cel === "" ||
+      date === "" ||
+      name === "" ||
+      email === "" ||
+      address === ""
+    )
+      return alert("Debe rellenar todos los campos");
+    startUpdateContact(formState);
     Swal.fire("Contacto Actualizado!", "You clicked the button!", "success");
     onResetForm();
     Navigate("/");
   };
 
-  const { contacts } = useSelector((state) => state.contact);
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);

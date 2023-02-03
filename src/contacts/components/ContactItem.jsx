@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
 import { FaTrashAlt, FaCheckCircle, FaEdit } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+
+import { SetIdEdit } from "../../store/slices/contactSlice";
+import { useContactStore } from "../hooks/useContactStore";
+
 import Swal from "sweetalert2";
-import { Remove_Contact, SetIdEdit } from "../../store/slices/contactSlice";
 
 export const ContactItem = () => {
   const [done, setDone] = useState(false);
-  const { contacts, search } = useSelector((state) => state.contact);
+  const { startDeletingContact, contacts, search } = useContactStore();
+
   const dispatch = useDispatch();
   const Navigate = useNavigate();
 
   const removeProfile = (id) => {
-    dispatch(Remove_Contact(id));
+    startDeletingContact(id);
     Swal.fire("Contacto Removido!", "You clicked the button!", "success");
   };
 
-  const editProfile = (id) => {
-    dispatch(SetIdEdit(id));
+  const editProfile = (id, name, lastName, email, cel, date, address) => {
+    dispatch(SetIdEdit({ id, name, lastName, email, cel, date, address }));
     Navigate("/editContact");
   };
 
@@ -42,7 +46,7 @@ export const ContactItem = () => {
             return value;
           }
         })
-        .map(({ id, cel, name }) => (
+        .map(({ id, cel, name, lastName, email, date, address }) => (
           <div className="profile --card --flex-between" key={id}>
             <div className="desc">
               <h4 className="--color-dark">{name}</h4>
@@ -52,7 +56,9 @@ export const ContactItem = () => {
             <FaEdit
               size={25}
               className={`icon ${done ? "text-success" : " "}`}
-              onClick={() => editProfile(id)}
+              onClick={() =>
+                editProfile(id, name, lastName, email, cel, date, address)
+              }
             />
             <FaCheckCircle
               size={25}
@@ -65,7 +71,7 @@ export const ContactItem = () => {
               onClick={() => removeProfile(id)}
             />
 
-            <div className="moreInfo">
+            <div className="--more-info">
               <Link to={`/contactDetail/${id}`}>Más..</Link>
             </div>
           </div>

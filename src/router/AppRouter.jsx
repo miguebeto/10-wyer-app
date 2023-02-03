@@ -10,6 +10,8 @@ import {
 import { Footer} from "../contacts/layout";
 
 export const AppRouter = () => {
+
+
   return (
     <>
       <Routes>

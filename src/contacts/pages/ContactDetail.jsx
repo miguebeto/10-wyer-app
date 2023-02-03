@@ -44,7 +44,7 @@ export const ContactDetail = () => {
   }, [tasks]);
 
   return (
-    <div>
+    <div className="--contact-detail">
       <h5>
         <BiArrowBack onClick={() => Navigate("/")} size={20} /> 
         Datos de Contacto
@@ -62,7 +62,7 @@ export const ContactDetail = () => {
       <div className="profile --card --flex-between">
         <form className="--form-control">
           <input
-            type="text"
+            type="textarea"
             placeholder="Agregar un comentario..."
             className="form-control"
             value={description}

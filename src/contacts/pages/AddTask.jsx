@@ -27,6 +27,7 @@ export const AddTask = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    if(title === "" || author === "" || deadline === "") return alert('Debe rellenar todos los campos')
     dispatch(Add_Task(formState));
     Swal.fire("Tarea Agregada!", "You clicked the button!", "success");
     onResetForm();
@@ -79,6 +80,7 @@ export const AddTask = () => {
           />
           <label htmlFor="summary">Resumen del estado de las tareas</label>
           <div>
+
             <input
               type="radio"
               value="Solicitar"

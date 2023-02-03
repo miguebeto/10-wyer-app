@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import { useState } from 'react';
 
-export const useForm = (initialState = {}) => {
-  const [formState, setFormState] = useState(initialState);
+export const useForm = ( initialForm = {} ) => {
+  
+    const [ formState, setFormState ] = useState( initialForm );
 
-  const onInputChange = ({ target }) => {
-    const { name, value } = target;
-    setFormState({
-      ...formState,
-      [name]: value, //identifica el nombre del input donde se encuentra digitando y setea el valor por el que se digita
-    });
-  };
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
+        setFormState({
+            ...formState,
+            [ name ]: value
+        });
+    }
 
-  const onResetForm = () => {
-    setFormState(initialState);
-  };
+    const onResetForm = () => {
+        setFormState( initialForm );
+    }
 
-  return {
-    ...formState,
-    formState,
-    onInputChange,
-    onResetForm,
-  };
-};
+    return {
+        ...formState,
+        formState,
+        onInputChange,
+        onResetForm,
+    }
+}
